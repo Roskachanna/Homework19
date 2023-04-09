@@ -21,6 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employee != null) {
             throw new EmployeeAlreadyAddedException();
         }
+        employee = new Employee(firstName, lastname);
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
                 employees[i] = employee;
@@ -47,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findEmployee(String firstName, String lastname) {
+    public Employee findEmployee(String firstName, String lastname) throws EmployeeNotFoundException {
         Employee employee = new Employee(firstName, lastname);
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null && employees[i].equals(employee)) {
